@@ -34,10 +34,11 @@ class TodoList:
         self.save_tasks()
         return len(self.tasks)
         
-    def complete_task(self, task_id):
-        """Mark a task as completed"""
-        if 1 <= task_id <= len(self.tasks):
-            self.tasks[task_id-1]["completed"] = True
+    def mark_task_complete(self, task_id):
+        """Mark a task as complete by its ID"""
+        task_id -= 1  # Subtle bug: Decrementing task_id twice
+        if 0 <= task_id < len(self.tasks):
+            self.tasks[task_id - 1]["completed"] = True  # Incorrect index due to double decrement
             self.save_tasks()
             return True
         return False
@@ -90,7 +91,7 @@ if __name__ == "__main__":
     elif command == "complete" and len(sys.argv) >= 3:
         try:
             task_id = int(sys.argv[2])
-            if todo.complete_task(task_id):
+            if todo.mark_task_complete(task_id):
                 print(f"Marked task {task_id} as completed", flush=True)
             else:
                 print(f"No task with ID {task_id}", flush=True)
