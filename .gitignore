@@ -76,3 +76,6 @@ celerybeat-schedule
 
 # Windows
 Thumbs.db
+
+# Todo app data
+todo_data.json
