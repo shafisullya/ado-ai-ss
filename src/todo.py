@@ -36,9 +36,8 @@ class TodoList:
         
     def mark_task_complete(self, task_id):
         """Mark a task as complete by its ID"""
-        task_id -= 1  # Subtle bug: Decrementing task_id twice
-        if 0 <= task_id < len(self.tasks):
-            self.tasks[task_id - 1]["completed"] = True  # Incorrect index due to double decrement
+        if 1 <= task_id <= len(self.tasks):
+            self.tasks[task_id - 1]["completed"] = True  # Correct index
             self.save_tasks()
             return True
         return False

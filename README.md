@@ -32,3 +32,23 @@ This project uses:
 - pytest for testing
 - pylint for linting
 - black for code formatting
+
+## Usage
+
+### Add a Task
+To add a task to your todo list:
+```
+python src/todo.py add "task description"
+```
+
+### List Tasks
+To list all tasks with their completion status:
+```
+python src/todo.py list
+```
+
+### Mark a Task as Completed
+To mark a task as completed by its ID:
+```
+python src/todo.py complete <task_number>
+```
